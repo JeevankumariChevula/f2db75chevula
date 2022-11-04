@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{"Earp_Name" : "ApplePods", "Earp_Type" : "Medium", "Earp_Size" : 3.5, "Earp_Price" : 2300},{"Earp_Name" : "IPods", "Earp_Type" : "Small", "Earp_Size" : 2.5, "Earp_Price" : 2400},{"Earp_Name" : "RelamePods", "Earp_Type" : "Large", "Earp_Size" : 4.5, "Earp_Price" : 2500}]
+  div.container-fluid 
+    div.row 
+        each item, index in results
+            div.col-sm-2(onclick=`buy(${index})`) Earpods Name: #{item["Earp_Name"]} <br> Earpods Type: #{item["Earp_Type"]} <br> Earpods Size: #{item["Earp_Size"]} <br> Earpods Price: #{item["Earp_Price"]}
+
+  script.
+    function buy(index) {
+      alert("You purchased item " + index)
+    }
