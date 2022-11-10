@@ -3,12 +3,29 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var Earpods = require("./models/Earpods"); 
+
+require('dotenv').config(); 
+const connectionString =  
+process.env.MONGO_CON 
+mongoose = require('mongoose'); 
+mongoose.connect(connectionString,  
+{useNewUrlParser: true, 
+useUnifiedTopology: true});
+//Get the default connection 
+var db = mongoose.connection; 
+ 
+//Bind connection to error event  
+db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
+db.once("open", function(){ 
+  console.log("Connection to DB succeeded")}); 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var EarpRouter = require('./routes/Earpods');
 var gridBuilderRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 
@@ -27,6 +44,8 @@ app.use('/users', usersRouter);
 app.use('/Earpods',EarpRouter);
 app.use('/gridBuild',gridBuilderRouter);
 app.use('/selector',selectorRouter);
+app.use('/resource',resourceRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,5 +62,33 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// We can seed the collection if needed on server start 
+async function recreateDB(){ 
+  // Delete everything 
+  await Earpods.deleteMany(); 
+ 
+  let instance1 = new 
+Earpods({Earp_Name : "ApplePods", Earp_Type : "Medium", Earp_Size : 3.5, Earp_Price : 2300}); 
+  instance1.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("First object saved") 
+  });
+  let instance2 = new 
+Earpods({Earp_Name : "IPods", Earp_Type : "Small", Earp_Size : 2.5, Earp_Price : 2400}); 
+  instance2.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("First object saved") 
+  });
+  let instance3 = new 
+Earpods({Earp_Name : "RelamePods", Earp_Type : "Large", Earp_Size : 4.5, Earp_Price : 2500}); 
+  instance3.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("First object saved") 
+  }); 
+} 
+ 
+let reseed = true; 
+if (reseed) { recreateDB();}
 
 module.exports = app;
