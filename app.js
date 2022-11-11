@@ -78,13 +78,13 @@ Earpods({Earp_Name : "ApplePods", Earp_Type : "Medium", Earp_Size : 3.5, Earp_Pr
 Earpods({Earp_Name : "IPods", Earp_Type : "Small", Earp_Size : 2.5, Earp_Price : 2400}); 
   instance2.save( function(err,doc) { 
       if(err) return console.error(err); 
-      console.log("First object saved") 
+      console.log("Second object saved") 
   });
   let instance3 = new 
 Earpods({Earp_Name : "RelamePods", Earp_Type : "Large", Earp_Size : 4.5, Earp_Price : 2500}); 
   instance3.save( function(err,doc) { 
       if(err) return console.error(err); 
-      console.log("First object saved") 
+      console.log("Third object saved") 
   }); 
 } 
  

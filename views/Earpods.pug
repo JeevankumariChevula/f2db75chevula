@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"Earp_Name" : "ApplePods", "Earp_Type" : "Medium", "Earp_Size" : 3.5, "Earp_Price" : 2300},{"Earp_Name" : "IPods", "Earp_Type" : "Small", "Earp_Size" : 2.5, "Earp_Price" : 2400},{"Earp_Name" : "RelamePods", "Earp_Type" : "Large", "Earp_Size" : 4.5, "Earp_Price" : 2500}]
+  - var results = results
   div.container-fluid 
     div.row 
         each item, index in results

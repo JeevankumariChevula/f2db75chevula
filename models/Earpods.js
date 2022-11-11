@@ -6,5 +6,5 @@ const EarpodsSchema = mongoose.Schema({
     Earp_Price: Number
 }) 
  
-module.exports = mongoose.model("Earpods", 
-EarpodsSchema) 
+module.exports = mongoose.model("Earpods", EarpodsSchema) 
+
