@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let Earpodsid = toShow._id 
+  - let Earp_Name = toShow.Earp_Name 
+  - let Earp_Size = toShow.Earp_Size 
+  - let Earp_Price = toShow.Earp_Price 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{Earpodsid} 
+  - let actionid = "/resource/Earpods/" + Earpodsid 
+  form(id='EarpodsForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.EarpodsAttr(for='Earp_Name') Earpods Name 
+        input#Earp_Name(type='text', name='Earp_Name', value= Earp_Name ) 
+    div.form-group 
+        label.EarpodsAttr(for='Earp_Size') Earpods Size 
+        input#Earp_Size(type='text', name='Earp_Size', value= Earp_Size ) 
+    div.form-group 
+        label.EarpodsAttr(for='Earp_Price') Earpods Price 
+        input#Earp_Price(type='number', name='Earp_Price', value= Earp_Price ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['EarpodsForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 

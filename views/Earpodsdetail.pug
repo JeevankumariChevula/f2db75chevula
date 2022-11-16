@@ -1,0 +1,23 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let id = toShow._id 
+  - let Earp_Name = toShow.Earp_Name
+  - let Earp_Type = toShow.Earp_Type
+  - let Earp_Size = toShow.Earp_Size
+
+  div 
+    div.row 
+      div(class='EarpodsAttr mr-3') Earpods ID is: 
+      div #{id} 
+    div.row 
+      div(class='EarpodsAttr mr-3') Earpods Name is: 
+      div #{Earp_Name} 
+    div.row 
+      div(class='EarpodsAttr mr-3') Earpods Type is: 
+      div #{Earp_Type} 
+    div.row 
+      div(class='EarpodsAttr mr-3') Earpods Size is: 
+      div #{Earp_Size} 
