@@ -1,16 +1,15 @@
 extends layout 
  
 block content 
-  h1= title 
+  h1(class='container-fluid p-5 bg-primarary text-success text-center', style='background-color:#B233FF')= title
  
   - let Earpodsid = toShow._id 
   - let Earp_Name = toShow.Earp_Name 
   - let Earp_Size = toShow.Earp_Size 
-  - let Earp_Price = toShow.Earp_Price 
-   
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{Earpodsid} 
+  - let Earp_Price = toShow.Earp_Price
+
+    div.row(class='justify-content p-2 text-center text-dark')
+        div.mr-1(class='p-2 flex-fill EarpodsAttr') ID is #{Earpodsid} 
   - let actionid = "/resource/Earpods/" + Earpodsid 
   form(id='EarpodsForm', action= actionid, method="PUT") 
     div.form-group 

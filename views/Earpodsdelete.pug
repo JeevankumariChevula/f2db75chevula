@@ -1,30 +1,32 @@
 extends layout 
  
 block content 
-  h1= title 
+  h1(class='container-fluid p-5 bg-primarary text-success text-center')= title
  
   if (toShow == null) 
     h2 No instance to delete 
   else 
     - let Earpodsid = toShow._id 
-    - let Earp_Name = toShow.Earp_Name 
+    - let Earp_Name = toShow.Earp_Name
     - let Earp_Size = toShow.Earp_Size 
     - let Earp_Price = toShow.Earp_Price 
-    - let actionid = "/resource/Earpods/" + Earpodsid 
+    - let actionid = "/resource/Earpods/" + Earpodsid
+
     script let actionid = "#{actionid}" 
-    div 
-      div.row 
-        div(class='EarpodsAttr mr-3') Earpods ID is: 
-        div #{Earpodsid} 
-      div.row 
-        div(class='EarpodsAttr mr-3') Earpods Type is: 
-        div #{Earp_Name} 
-      div.row 
-        div(class='EarpodsAttr mr-3') Earpods Size is: 
-        div #{Earp_Size} 
-      div.row 
-        div(class='EarpodsAttr mr-3') Earpods Price is: 
-        div #{Earp_Price}
+    div(class="container text-center")
+      div(class='justify-content p-2 text-center text-dark', style='background-color:#B233FF')
+        div.row 
+          div(class='p-2 flex-fill EarpodsAttr mr-3') Earpods ID is: 
+          div #{Earpodsid} 
+        div.row 
+          div(class='p-2 flex-fill EarpodsAttr mr-3') Earpods Name is: 
+          div #{Earp_Name} 
+        div.row 
+          div(class='p-2 flex-fill EarpodsAttr mr-3') Earpods Size is: 
+          div #{Earp_Size} 
+        div.row 
+          div(class='p-2 flex-fill EarpodsAttr mr-3') Earpods Price is: 
+          div #{Earp_Price}
  
     button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
     button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
