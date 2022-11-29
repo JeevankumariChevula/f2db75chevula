@@ -24,13 +24,13 @@ const secured = (req, res, next) => {
 router.get('/detail', Earpods_controlers.Earpods_view_one_Page); 
 
 /* GET create Earpods page */ 
-router.get('/create', Earpods_controlers.Earpods_create_Page); 
+router.get('/create',secured, Earpods_controlers.Earpods_create_Page); 
 
 /* GET create update page */ 
 router.get('/update',secured, Earpods_controlers.Earpods_update_Page);
 
 /* GET delete Earpods page */ 
-router.get('/delete', Earpods_controlers.Earpods_delete_Page); 
+router.get('/delete',secured, Earpods_controlers.Earpods_delete_Page); 
 
 // /* GET update Earpods page */ 
 // router.get('/update', Earpods_controlers.Earpods_update_Page); 
