@@ -20,6 +20,9 @@ router.get('/update', Earpods_controlers.Earpods_update_Page);
 
 /* GET delete Earpods page */ 
 router.get('/delete', Earpods_controlers.Earpods_delete_Page); 
+
+/* GET update Earpods page */ 
+router.get('/update', Earpods_controlers.Earpods_update_Page); 
  
  
  
